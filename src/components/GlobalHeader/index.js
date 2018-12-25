@@ -3,7 +3,7 @@ import { Icon } from 'antd';
 import Link from 'umi/link';
 import Debounce from 'lodash-decorators/debounce';
 import styles from './index.less';
-import RightContent from './RightContent';
+import LeftContent from './LeftContent';
 
 export default class GlobalHeader extends PureComponent {
   componentWillUnmount() {
@@ -32,9 +32,9 @@ export default class GlobalHeader extends PureComponent {
           </Link>
         )}
         <span className={styles.trigger} onClick={this.toggle}>
-          <Icon type={collapsed ? 'menu-unfold' : 'menu-fold'} />
+          <Icon type={collapsed ? 'menu-fold' : 'menu-unfold'} />
         </span>
-        <RightContent {...this.props} />
+        <LeftContent {...this.props} />
       </div>
     );
   }
