@@ -125,10 +125,10 @@ class BasicList extends PureComponent {
       if (key === 'edit') this.showEditModal(currentItem);
       else if (key === 'delete') {
         Modal.confirm({
-          title: '删除任务',
-          content: '确定删除该任务吗？',
-          okText: '确认',
-          cancelText: '取消',
+          title: 'حذف کار',
+          content: 'آیا مطمپنید می خواهید این کار را حذف کنید؟',
+          okText: 'تآیید',
+          cancelText: 'لغو',
           onOk: () => this.deleteItem(currentItem.id),
         });
       }
@@ -136,7 +136,7 @@ class BasicList extends PureComponent {
 
     const modalFooter = done
       ? { footer: null, onCancel: this.handleDone }
-      : { okText: '保存', onOk: this.handleSubmit, onCancel: this.handleCancel };
+      : { okText: 'ذخیره کنید', onOk: this.handleSubmit, onCancel: this.handleCancel };
 
     const Info = ({ title, value, bordered }) => (
       <div className={styles.headerInfo}>
@@ -149,11 +149,11 @@ class BasicList extends PureComponent {
     const extraContent = (
       <div className={styles.extraContent}>
         <RadioGroup defaultValue="all">
-          <RadioButton value="all">全部</RadioButton>
-          <RadioButton value="progress">进行中</RadioButton>
-          <RadioButton value="waiting">等待中</RadioButton>
+          <RadioButton value="all">همه</RadioButton>
+          <RadioButton value="progress">در حال پیشرفت است</RadioButton>
+          <RadioButton value="waiting">منتظر</RadioButton>
         </RadioGroup>
-        <Search className={styles.extraContentSearch} placeholder="请输入" onSearch={() => ({})} />
+        <Search className={styles.extraContentSearch} placeholder="لطفا وارد شوید" onSearch={() => ({})} />
       </div>
     );
 
@@ -171,7 +171,7 @@ class BasicList extends PureComponent {
           <p>{owner}</p>
         </div>
         <div className={styles.listContentItem}>
-          <span>开始时间</span>
+          <span>زمان شروع</span>
           <p>{moment(createdAt).format('YYYY-MM-DD HH:mm')}</p>
         </div>
         <div className={styles.listContentItem}>
@@ -184,13 +184,13 @@ class BasicList extends PureComponent {
       <Dropdown
         overlay={
           <Menu onClick={({ key }) => editAndDelete(key, props.current)}>
-            <Menu.Item key="edit">编辑</Menu.Item>
-            <Menu.Item key="delete">删除</Menu.Item>
+            <Menu.Item key="edit">ویرایش</Menu.Item>
+            <Menu.Item key="delete">حذف</Menu.Item>
           </Menu>
         }
       >
         <a>
-          更多 <Icon type="down" />
+          بیشتر <Icon type="down" />
         </a>
       </Dropdown>
     );
@@ -200,11 +200,11 @@ class BasicList extends PureComponent {
         return (
           <Result
             type="success"
-            title="操作成功"
-            description="一系列的信息描述，很短同样也可以带标点。"
+            title="عملیات موفق"
+            description="مجموعه ای از توصیفات اطلاعات، کوتاه و به طور مساوی نقطه گذاری شده است."
             actions={
               <Button type="primary" onClick={this.handleDone}>
-                知道了
+                من می دانم
               </Button>
             }
             className={styles.formResult}
@@ -213,41 +213,41 @@ class BasicList extends PureComponent {
       }
       return (
         <Form onSubmit={this.handleSubmit}>
-          <FormItem label="任务名称" {...this.formLayout}>
+          <FormItem label="نام وظیفه" {...this.formLayout}>
             {getFieldDecorator('title', {
-              rules: [{ required: true, message: '请输入任务名称' }],
+              rules: [{ required: true, message: 'لطفا نام یک کار را وارد کنید.' }],
               initialValue: current.title,
-            })(<Input placeholder="请输入" />)}
+            })(<Input placeholder="لطفا وارد شوید" />)}
           </FormItem>
-          <FormItem label="开始时间" {...this.formLayout}>
+          <FormItem label="زمان شروع" {...this.formLayout}>
             {getFieldDecorator('createdAt', {
-              rules: [{ required: true, message: '请选择开始时间' }],
+              rules: [{ required: true, message: 'لطفا زمان شروع را انتخاب کنید' }],
               initialValue: current.createdAt ? moment(current.createdAt) : null,
             })(
               <DatePicker
                 showTime
-                placeholder="请选择"
+                placeholder="لطفا انتخاب کنید"
                 format="YYYY-MM-DD HH:mm:ss"
                 style={{ width: '100%' }}
               />
             )}
           </FormItem>
-          <FormItem label="任务负责人" {...this.formLayout}>
+          <FormItem label="مدیر وظیفه" {...this.formLayout}>
             {getFieldDecorator('owner', {
-              rules: [{ required: true, message: '请选择任务负责人' }],
+              rules: [{ required: true, message: 'لطفا مالک کار را انتخاب کنید' }],
               initialValue: current.owner,
             })(
-              <Select placeholder="请选择">
-                <SelectOption value="付晓晓">付晓晓</SelectOption>
-                <SelectOption value="周毛毛">周毛毛</SelectOption>
+              <Select placeholder="لطفا انتخاب کنید">
+                <SelectOption value="فو Xiaoxiao">付晓晓</SelectOption>
+                <SelectOption value="ژو ماموئو">ژو ماموئو</SelectOption>
               </Select>
             )}
           </FormItem>
-          <FormItem {...this.formLayout} label="产品描述">
+          <FormItem {...this.formLayout} label="توضیحات محصول">
             {getFieldDecorator('subDescription', {
-              rules: [{ message: '请输入至少五个字符的产品描述！', min: 5 }],
+              rules: [{ message: 'لطفا توضیحات محصول حداقل پنج عدد را وارد کنید!', min: 5 }],
               initialValue: current.subDescription,
-            })(<TextArea rows={4} placeholder="请输入至少五个字符" />)}
+            })(<TextArea rows={4} placeholder="لطفا حداقل پنج کاراکتر وارد کنید" />)}
           </FormItem>
         </Form>
       );
@@ -258,13 +258,13 @@ class BasicList extends PureComponent {
           <Card bordered={false}>
             <Row>
               <Col sm={8} xs={24}>
-                <Info title="我的待办" value="8个任务" bordered />
+                <Info title="کار من" value="8 ماموریت" bordered />
               </Col>
               <Col sm={8} xs={24}>
-                <Info title="本周任务平均处理时间" value="32分钟" bordered />
+                <Info title="میانگین پردازش وظیفه در این هفته" value="32 دقیقه" bordered />
               </Col>
               <Col sm={8} xs={24}>
-                <Info title="本周完成任务数" value="24个任务" />
+                <Info title="تعداد وظایف تکمیل شده در این هفته" value="24 ماموریت" />
               </Col>
             </Row>
           </Card>
@@ -272,7 +272,7 @@ class BasicList extends PureComponent {
           <Card
             className={styles.listCard}
             bordered={false}
-            title="标准列表"
+            title="فهرست استاندارد"
             style={{ marginTop: 24 }}
             bodyStyle={{ padding: '0 32px 40px 32px' }}
             extra={extraContent}
@@ -288,7 +288,7 @@ class BasicList extends PureComponent {
                 /* eslint-enable */
               }}
             >
-              添加
+              اضافه کردن
             </Button>
             <List
               size="large"
@@ -305,7 +305,7 @@ class BasicList extends PureComponent {
                         this.showEditModal(item);
                       }}
                     >
-                      编辑
+                      ویرایش
                     </a>,
                     <MoreBtn current={item} />,
                   ]}
@@ -322,7 +322,7 @@ class BasicList extends PureComponent {
           </Card>
         </div>
         <Modal
-          title={done ? null : `任务${current ? '编辑' : '添加'}`}
+          title={done ? null : `وظیفه${current ? 'ویرایش' : 'اضافه کردن'}`}
           className={styles.standardListForm}
           width={640}
           bodyStyle={done ? { padding: '72px 0' } : { padding: '28px 0 0' }}
