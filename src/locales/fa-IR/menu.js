@@ -1,5 +1,5 @@
 export default {
-  'menu.home': 'Home',
+  'menu.home': 'خانه',
   'menu.dashboard': 'Dashboard',
   'menu.dashboard.analysis': 'Analysis',
   'menu.dashboard.monitor': 'Monitor',
