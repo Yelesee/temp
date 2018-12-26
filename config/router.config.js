@@ -43,19 +43,15 @@ export default [
       },
       // Stations
       {
-        path:'/stations',
+        path: '/stations/list',
         icon: 'form',
         name: 'ایستگاه',
-        routes : [
+
+        routes: [
           {
             path: '/stations/list',
             name: 'لیست ایستگاه ها',
             component: './Stations/stationList',
-          },
-          {
-            path: '/stations/create',
-            name: 'ایجاد ایستگاه جدید',
-            component: './Stations/StationCreate',
           },
         ],
       },

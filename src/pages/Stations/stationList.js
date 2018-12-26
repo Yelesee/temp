@@ -17,7 +17,6 @@ import {
   Avatar,
   Modal,
   Form,
-  DatePicker,
   Select,
 } from 'antd';
 
@@ -30,7 +29,7 @@ const FormItem = Form.Item;
 const RadioButton = Radio.Button;
 const RadioGroup = Radio.Group;
 const SelectOption = Select.Option;
-const { Search, TextArea } = Input;
+const { Search } = Input;
 
 @connect(({ list, loading }) => ({
   list,
@@ -153,7 +152,11 @@ class BasicList extends PureComponent {
           <RadioButton value="progress">در حال پیشرفت است</RadioButton>
           <RadioButton value="waiting">منتظر</RadioButton>
         </RadioGroup>
-        <Search className={styles.extraContentSearch} placeholder="لطفا وارد شوید" onSearch={() => ({})} />
+        <Search
+          className={styles.extraContentSearch}
+          placeholder="لطفا وارد شوید"
+          onSearch={() => ({})}
+        />
       </div>
     );
 
@@ -213,41 +216,52 @@ class BasicList extends PureComponent {
       }
       return (
         <Form onSubmit={this.handleSubmit}>
-          <FormItem label="نام وظیفه" {...this.formLayout}>
+          <FormItem label="نام دستگاه" {...this.formLayout}>
             {getFieldDecorator('title', {
-              rules: [{ required: true, message: 'لطفا نام یک کار را وارد کنید.' }],
+              rules: [{ required: true, message: 'وارد کردن نام دستگاه الزامی است' }],
               initialValue: current.title,
-            })(<Input placeholder="لطفا وارد شوید" />)}
+            })(<Input placeholder="لطفا نام دستگاه را وارد کنید" />)}
           </FormItem>
-          <FormItem label="زمان شروع" {...this.formLayout}>
+
+          <FormItem label="سریال دستگاه" {...this.formLayout}>
             {getFieldDecorator('createdAt', {
-              rules: [{ required: true, message: 'لطفا زمان شروع را انتخاب کنید' }],
-              initialValue: current.createdAt ? moment(current.createdAt) : null,
-            })(
-              <DatePicker
-                showTime
-                placeholder="لطفا انتخاب کنید"
-                format="YYYY-MM-DD HH:mm:ss"
-                style={{ width: '100%' }}
-              />
-            )}
+              rules: [{ required: true, message: 'وارد کردن سریال دستگاه الزامی است' }],
+            })(<Input placeholder="لطفا سریال دستگاه را وارد کنید" />)}
           </FormItem>
-          <FormItem label="مدیر وظیفه" {...this.formLayout}>
+
+          <FormItem label="کد دستگاه" {...this.formLayout}>
+            {getFieldDecorator('createdAt', {
+              rules: [{ required: true, message: 'وارد کردن کد دستگاه الزامی است' }],
+            })(<Input placeholder="لطفا کد دستگاه را وارد کنید" />)}
+          </FormItem>
+
+          <FormItem label="موقعیت دستگاه" {...this.formLayout}>
+            {getFieldDecorator('createdAt', {
+              rules: [{ required: true, message: 'وارد کردن موقعیت دستگاه الزامی است' }],
+            })(<Input placeholder="لطفا موقعیت دستگاه را وارد کنید" />)}
+          </FormItem>
+
+          <FormItem label="نوع دستگاه" {...this.formLayout}>
             {getFieldDecorator('owner', {
-              rules: [{ required: true, message: 'لطفا مالک کار را انتخاب کنید' }],
+              rules: [{ required: true, message: 'لطفا نوع دستگاه را وارد کنید' }],
               initialValue: current.owner,
             })(
               <Select placeholder="لطفا انتخاب کنید">
-                <SelectOption value="فو Xiaoxiao">付晓晓</SelectOption>
-                <SelectOption value="ژو ماموئو">ژو ماموئو</SelectOption>
+                <SelectOption value="CENTER PIVOT">CENTER PIVOT</SelectOption>
+                <SelectOption value="AUX">AUX</SelectOption>
               </Select>
             )}
           </FormItem>
-          <FormItem {...this.formLayout} label="توضیحات محصول">
-            {getFieldDecorator('subDescription', {
-              rules: [{ message: 'لطفا توضیحات محصول حداقل پنج عدد را وارد کنید!', min: 5 }],
-              initialValue: current.subDescription,
-            })(<TextArea rows={4} placeholder="لطفا حداقل پنج کاراکتر وارد کنید" />)}
+
+          <FormItem label="نوع دستگاه" {...this.formLayout}>
+            {getFieldDecorator('owner', {
+              rules: [{ required: true, message: 'لطفا نوع دستگاه را وارد کنید' }],
+              initialValue: current.owner,
+            })(
+              <Select placeholder="لطفا انتخاب کنید">
+                <option>ll</option>
+              </Select>
+            )}
           </FormItem>
         </Form>
       );
@@ -258,13 +272,13 @@ class BasicList extends PureComponent {
           <Card bordered={false}>
             <Row>
               <Col sm={8} xs={24}>
-                <Info title="کار من" value="8 ماموریت" bordered />
+                <Info title="دستگاه های خاموش" value="8" bordered />
               </Col>
               <Col sm={8} xs={24}>
-                <Info title="میانگین پردازش وظیفه در این هفته" value="32 دقیقه" bordered />
+                <Info title="دستگاه های روشن" value="16" bordered />
               </Col>
               <Col sm={8} xs={24}>
-                <Info title="تعداد وظایف تکمیل شده در این هفته" value="24 ماموریت" />
+                <Info title="تمام دستگاه ها" value="24" />
               </Col>
             </Row>
           </Card>

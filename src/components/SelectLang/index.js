@@ -13,9 +13,9 @@ export default class SelectLang extends PureComponent {
   render() {
     const { className } = this.props;
     const selectedLang = getLocale();
-    const locales = [ 'fa-IR'];
+    const locales = ['fa-IR'];
     const languageLabels = {
-      'fa-IR': 'فارسی'
+      'fa-IR': 'فارسی',
     };
     const languageIcons = {
       'fa-IR': 'FA',
