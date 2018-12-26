@@ -216,32 +216,32 @@ class BasicList extends PureComponent {
       }
       return (
         <Form onSubmit={this.handleSubmit}>
-          <FormItem label="نام دستگاه" {...this.formLayout}>
+          <FormItem label="نام" {...this.formLayout}>
             {getFieldDecorator('title', {
               rules: [{ required: true, message: 'وارد کردن نام دستگاه الزامی است' }],
               initialValue: current.title,
             })(<Input placeholder="لطفا نام دستگاه را وارد کنید" />)}
           </FormItem>
 
-          <FormItem label="سریال دستگاه" {...this.formLayout}>
+          <FormItem label="سریال" {...this.formLayout}>
             {getFieldDecorator('createdAt', {
               rules: [{ required: true, message: 'وارد کردن سریال دستگاه الزامی است' }],
             })(<Input placeholder="لطفا سریال دستگاه را وارد کنید" />)}
           </FormItem>
 
-          <FormItem label="کد دستگاه" {...this.formLayout}>
+          <FormItem label="کد" {...this.formLayout}>
             {getFieldDecorator('createdAt', {
               rules: [{ required: true, message: 'وارد کردن کد دستگاه الزامی است' }],
             })(<Input placeholder="لطفا کد دستگاه را وارد کنید" />)}
           </FormItem>
 
-          <FormItem label="موقعیت دستگاه" {...this.formLayout}>
+          <FormItem label="موقعیت" {...this.formLayout}>
             {getFieldDecorator('createdAt', {
               rules: [{ required: true, message: 'وارد کردن موقعیت دستگاه الزامی است' }],
             })(<Input placeholder="لطفا موقعیت دستگاه را وارد کنید" />)}
           </FormItem>
 
-          <FormItem label="نوع دستگاه" {...this.formLayout}>
+          <FormItem label="نوع" {...this.formLayout}>
             {getFieldDecorator('owner', {
               rules: [{ required: true, message: 'لطفا نوع دستگاه را وارد کنید' }],
               initialValue: current.owner,
@@ -253,9 +253,9 @@ class BasicList extends PureComponent {
             )}
           </FormItem>
 
-          <FormItem label="نوع دستگاه" {...this.formLayout}>
+          <FormItem label="نام سازمان" {...this.formLayout}>
             {getFieldDecorator('owner', {
-              rules: [{ required: true, message: 'لطفا نوع دستگاه را وارد کنید' }],
+              rules: [{ required: true, message: 'لطفا نام سازمان را وارد کنید' }],
               initialValue: current.owner,
             })(
               <Select placeholder="لطفا انتخاب کنید">
@@ -336,7 +336,7 @@ class BasicList extends PureComponent {
           </Card>
         </div>
         <Modal
-          title={done ? null : `وظیفه${current ? 'ویرایش' : 'اضافه کردن'}`}
+          title={done ? null : ` اضافه کردن ${current ? 'دستگاه' : 'اضافه کردن'}`}
           className={styles.standardListForm}
           width={640}
           bodyStyle={done ? { padding: '72px 0' } : { padding: '28px 0 0' }}
