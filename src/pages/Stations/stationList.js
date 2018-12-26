@@ -259,7 +259,7 @@ class BasicList extends PureComponent {
               initialValue: current.owner,
             })(
               <Select placeholder="لطفا انتخاب کنید">
-                <option>ll</option>
+                <SelectOption value="AUX">باید از سرور بیاد</SelectOption>
               </Select>
             )}
           </FormItem>

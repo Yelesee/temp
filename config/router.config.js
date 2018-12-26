@@ -43,7 +43,7 @@ export default [
       },
       // Stations
       {
-        path: '/stations/list',
+        path: '/stations',
         icon: 'form',
         name: 'ایستگاه',
 
